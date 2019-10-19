@@ -4,10 +4,18 @@ const { poolPromise } = require('../data/db');
 const getTavernsDb = async function(req) {
     const pool = await poolPromise;
     let result;
+    let tavernId = 0;
+    let strsql = 'SELECT * FROM dbo.Taverns';
+    if (req.params.id != undefined) {
+        strsql += '  WHERE ID = @TavernID';
+        tavernId = req.params.id;
+    }
+    strsql += ' ORDER BY TavernName';
     try {
         result = await pool
             .request()
-            .query('SELECT * FROM dbo.Taverns ORDER BY TavernName');
+            .input('TavernId', sql.Int, tavernId)
+            .query(strsql);
     } catch (e) {
         throwError(e.message);
     }

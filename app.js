@@ -70,6 +70,7 @@ app.use((req, res, next) => {
 app.post('/users', userController.create);
 app.post('/login', userController.login);
 app.get('/taverns', tavernController.getTaverns);
+app.get('/taverns/:id', tavernController.getTaverns);
 app.get('/my-tavern', passport.authenticate('jwt', { session: false }), tavernController.getRooms);
 
 console.log('SERVER READY');

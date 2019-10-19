@@ -1,4 +1,4 @@
-<h2>My Rooms</h2>
+<h2 *ngFor="let tavern of taverns">{{tavern.TavernName}}</h2>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -9,7 +9,7 @@
     <tbody>
         <tr *ngFor="let room of rooms">
             <td>{{room.RoomName}}</td>
-            <td>{{room.DailyRate | currency:'USD':true:'1.2-2'}}</td>
+            <td>{{room.DailyRate | currency:'USD':'symbol':'1.2-2'}}</td>
         </tr>
     </tbody>    
 </table>
