@@ -9,6 +9,7 @@ export interface IUser {
     UserName: string;
     TavernId: string;
     RoleId: number;
+    Password: string;
 }
 
 export interface ILoginResponse {
@@ -81,5 +82,21 @@ export class AuthService {
         } else {
             this.cookieService.remove(tokenCookieKey);
         }
+    }
+
+    create(data): Observable<any> {
+        return this.http
+            .post<any>('http://localhost:3000/users', data)
+            .pipe(
+                tap((response) => {
+                    const user: any =
+                        response &&
+                        response.success &&
+                        response.token &&
+                        response.user
+                            ? response
+                            : null;
+                }),
+            );
     }
 }

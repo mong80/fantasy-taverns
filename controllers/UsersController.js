@@ -23,7 +23,7 @@ const hashPassword = async function(userInfo) {
 const createUser = async function(userInfo) {
     const pool = await poolPromise;
     let result;
-    const roleId = parseInt(userInfo.Tavern.Id) === 0 ? 1 : 2;
+    const roleId = parseInt(userInfo.RoleId) === 0 ? 1 : 2;
 
     if (parseInt(userInfo.Tavern.Id) === 0) {
         try {

@@ -1,0 +1,15 @@
+<h2>My Rooms</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Room Name</th>
+            <th scope="col">Daily Rate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let room of rooms">
+            <td>{{room.RoomName}}</td>
+            <td>{{room.DailyRate | currency:'USD':true:'1.2-2'}}</td>
+        </tr>
+    </tbody>    
+</table>

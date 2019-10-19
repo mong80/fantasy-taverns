@@ -16,12 +16,16 @@ export class LoginComponent {
             (response) => {
                 if (response.success) {
                     console.log('successful login');
-                    this.router.navigateByUrl('/home');
+                    this.router.navigateByUrl('/my-tavern');
                 }
             },
             (error) => {
                 console.log('username/password incorrect');
             },
         );
+    }
+
+    signup(): void {
+        this.router.navigateByUrl('/signup');
     }
 }

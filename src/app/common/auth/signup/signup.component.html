@@ -1,0 +1,43 @@
+<h2>Signup</h2>
+<form>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Role</label>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let role of roles">
+          <input type="radio" [(ngModel)]="selectedRole" name="role" value="{{role}}"> {{role}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Tavern</label>
+      <input *ngIf="selectedRole == 'Admin'" type="text" class="form-control" [(ngModel)]="tavernName" name="tavernName" />
+      <select *ngIf="selectedRole == 'Manager'" class="form-control" [(ngModel)]="tavernId" name="tavernId">
+        <option *ngFor="let tavern of taverns" [value]="tavern.ID">{{tavern.TavernName}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <label>User Name</label>
+      <input type="text" class="form-control" [(ngModel)]="userName" name="userName" />
+      <label>Password</label>
+      <input type="password" class="form-control" [(ngModel)]="password" name="password" />
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary" (click)="save()">
+        Submit
+      </button>
+    </div>
+    <div class="col-md-2">
+      <button type="button" class="btn btn-secondary" (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>
