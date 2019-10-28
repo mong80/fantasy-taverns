@@ -1,15 +1,19 @@
-<h2 *ngFor="let tavern of taverns">{{tavern.TavernName}}</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Room Name</th>
-            <th scope="col">Daily Rate</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let room of rooms">
-            <td>{{room.RoomName}}</td>
-            <td>{{room.DailyRate | currency:'USD':'symbol':'1.2-2'}}</td>
-        </tr>
-    </tbody>    
-</table>
+<h2>{{tavern.TavernName}}</h2>
+<div class="row">
+    <div class="col-md-6">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Room Name</th>
+                    <th scope="col" style="text-align: right">Daily Rate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let room of rooms">
+                    <td>{{room.RoomName}}</td>
+                    <td style="text-align: right">{{room.DailyRate | currency:'USD':'symbol':'1.2-2'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

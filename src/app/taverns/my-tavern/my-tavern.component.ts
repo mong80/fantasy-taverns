@@ -7,12 +7,12 @@ import { TavernsService, ITavern, IRoom } from '../taverns.service';
 })
 export class MyTavernComponent implements OnInit {
   rooms: IRoom[];
-  taverns: ITavern[];
+  tavern: ITavern;
 
   constructor(private tavernsService: TavernsService) {}
 
   ngOnInit() {
-    this.tavernsService.getTavern(5).subscribe((taverns) => (this.taverns = taverns));
+    this.tavernsService.getTavern().subscribe((taverns) => (this.tavern = taverns));
     this.tavernsService.getRooms().subscribe((rooms) => (this.rooms = rooms));
   }
 

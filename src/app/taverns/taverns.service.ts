@@ -25,12 +25,12 @@ export class TavernsService {
         return this.http.get<ITavern[]>('http://localhost:3000/taverns')
     }
 
-    getTavern(id): Observable<ITavern[]> {
-        return this.http.get<ITavern[]>('http://localhost:3000/taverns/' + id)
+    getTavern(): Observable<ITavern> {
+        return this.http.get<ITavern>('http://localhost:3000/my-tavern')
     }
 
     getRooms(): Observable<IRoom[]> {
-        return this.http.get<IRoom[]>('http://localhost:3000/my-tavern')
+        return this.http.get<IRoom[]>('http://localhost:3000/my-tavern/rooms')
     }
 
 }

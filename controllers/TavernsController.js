@@ -1,14 +1,12 @@
 const sql = require('mssql');
 const { poolPromise } = require('../data/db');
 
-const getTavernsDb = async function(req) {
+const getTavernsDb = async function(tavernId) {
     const pool = await poolPromise;
     let result;
-    let tavernId = 0;
     let strsql = 'SELECT * FROM dbo.Taverns';
-    if (req.params.id != undefined) {
+    if (tavernId != undefined) {
         strsql += '  WHERE ID = @TavernID';
-        tavernId = req.params.id;
     }
     strsql += ' ORDER BY TavernName';
     try {
@@ -19,19 +17,34 @@ const getTavernsDb = async function(req) {
     } catch (e) {
         throwError(e.message);
     }
-    return result.recordset;
+    if (tavernId != undefined) {
+        return result.recordset[0];
+    } else {
+        return result.recordset;
+    }
 };
 
 getTaverns = async function(req, res) {
     res.setHeader('ContentType', 'application/json');
     let err, taverns;
-    [err, taverns] = await executeOrThrow(getTavernsDb(req));
+    [err, taverns] = await executeOrThrow(getTavernsDb());
     if (err) {
         return returnError(res, err, 422);
     }
     return returnSuccessResponse(res, taverns, 201)
 };
 module.exports.getTaverns = getTaverns;
+
+getTavern = async function(req, res) {
+    res.setHeader('ContentType', 'application/json');
+    let err, tavern;
+    [err, tavern] = await executeOrThrow(getTavernsDb(req.user.TavernID));
+    if (err) {
+        return returnError(res, err, 422);
+    }
+    return returnSuccessResponse(res, tavern, 201)
+};
+module.exports.getTavern = getTavern;
 
 const getRoomsDb = async function(req) {
     const pool = await poolPromise;
