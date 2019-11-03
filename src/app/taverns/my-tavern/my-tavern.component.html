@@ -1,15 +1,25 @@
-<h2>{{tavern.TavernName}}</h2>
+<div class="row form-group">
+    <div class="col-md-6">
+        <label class="control-label" for="search">Search:</label>        
+        <div class="input-group">
+            <input class="form-control" id="search" (keyup)="search($event)" [(ngModel)]="searchText" name="search" placeholder="Enter text to search..." autocomplete="off">
+            <div class="input-group-addon">
+                <button type="button" [routerLink]="['room-info']" routerLinkActive="router-link-active" class="btn btn-primary">Add Room</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-6">
-        <table class="table table-striped">
-            <thead>
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
                 <tr>
                     <th scope="col">Room Name</th>
                     <th scope="col" style="text-align: right">Daily Rate</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let room of rooms">
+                <tr *ngFor="let room of rooms; trackBy: trackbyId" [routerLink]="['room-info', room.ID]">
                     <td>{{room.RoomName}}</td>
                     <td style="text-align: right">{{room.DailyRate | currency:'USD':'symbol':'1.2-2'}}</td>
                 </tr>
@@ -17,3 +27,4 @@
         </table>
     </div>
 </div>
+<button type="button" [routerLink]="['add-room-stay']" class="btn btn-secondary">Add Room Stay</button>

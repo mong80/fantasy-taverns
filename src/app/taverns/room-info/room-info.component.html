@@ -1,0 +1,39 @@
+<nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand">Room Info</span>
+</nav>
+<form [formGroup]="frmGroup" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <div class="col-md-6">
+            <label class="control-label" for="roomName">Name</label>
+            <input type="text" formControlName="roomName" class="form-control">
+            <div *ngIf="roomName.invalid && !roomName.pristine" class="alert alert-danger">
+                <div *ngIf="roomName.errors.required">
+                    Name is required
+                </div>
+                <div *ngIf="roomName.errors.maxlength">
+                    Name cannot be more than 100 characters
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <label class="control-label" for="dailyRate">Daily Rate</label>
+            <input type="number" formControlName="dailyRate" class="form-control">
+            <div *ngIf="dailyRate.invalid && !dailyRate.pristine" class="alert alert-danger">
+                <div *ngIf="dailyRate.errors.required">
+                    Daily Rate is required
+                </div>
+            </div>            
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-primary" [disabled]="!frmGroup.valid">Save</button>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>        
+        </div>
+    </div>
+</form>

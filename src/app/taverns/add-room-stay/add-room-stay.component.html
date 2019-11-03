@@ -1,0 +1,65 @@
+<p>add-room-stay works!</p>
+<form [formGroup]="frmGroup" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <div class="col-md-6">
+            <label class="control-label" for="guest">Guest</label>
+            <select class="form-control" formControlName="guest">
+                <option *ngFor="let guest of guests" [value]="guest.ID">{{guest.GuestName}}</option>
+            </select>
+            <div *ngIf="guest.invalid && !guest.pristine" class="alert alert-danger">
+                <div *ngIf="guest.errors.required">
+                    Guest is required
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <label class="control-label" for="room">Room</label>
+            <select class="form-control" formControlName="room">
+                <option *ngFor="let room of rooms" [value]="room.ID">
+                    {{room.RoomName}} - {{room.DailyRate | currency:'USD':'symbol':'1.2-2'}}
+                </option>
+            </select>
+            <div *ngIf="room.invalid && !room.pristine" class="alert alert-danger">
+                <div *ngIf="room.errors.required">
+                    Room is required
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <label class="control-label" for="stayDateStart">Stay Date</label>
+            <input type="date" formControlName="stayDateStart" class="form-control">
+            <div *ngIf="stayDateStart.invalid && !stayDateStart.pristine" class="alert alert-danger">
+                <div *ngIf="stayDateStart.errors.required">
+                    Stay Date is required
+                </div>
+            </div>            
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-6">
+            <label class="control-label" for="stayLength">Stay Length</label>
+            <div class="input-group">
+                <input type="number" formControlName="stayLength" class="form-control">
+                <span class="input-group-text">Days</span>                    
+            </div>            
+            <div *ngIf="stayLength.invalid && !stayLength.pristine" class="alert alert-danger">
+                <div *ngIf="stayLength.errors.required">
+                    Stay Length is required
+                </div>
+            </div>            
+        </div>
+    </div>    
+    <br />
+    <div class="row">
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-primary" [disabled]="!frmGroup.valid">Save</button>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>        
+        </div>
+    </div>
+</form>

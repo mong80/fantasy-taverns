@@ -29,8 +29,15 @@ export class TavernsService {
         return this.http.get<ITavern>('http://localhost:3000/my-tavern')
     }
 
-    getRooms(): Observable<IRoom[]> {
-        return this.http.get<IRoom[]>('http://localhost:3000/my-tavern/rooms')
+    getRooms(name: string, orderBy: string): Observable<IRoom[]> {
+        return this.http.get<IRoom[]>(`http://localhost:3000/my-tavern/rooms?Name=${name}&OrderBy=${orderBy}`)
     }
 
+    getRoom(id: string): Observable<IRoom> {
+        return this.http.get<IRoom>('http://localhost:3000/my-tavern/rooms/' + id)
+    }
+
+    saveRoom(data): Observable<any> {
+        return this.http.post<any>('http://localhost:3000/my-tavern/rooms', data)
+    }
 }
