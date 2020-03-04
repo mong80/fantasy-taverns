@@ -8,6 +8,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent {
     userName = '';
     password = '';
+    showSignup = 'false'
 
     constructor(private router: Router, private authService: AuthService) {}
 
@@ -28,4 +29,11 @@ export class LoginComponent {
     signup(): void {
         this.router.navigateByUrl('/signup');
     }
+
+    
+    toggleSignup() : void {}
+
+
 }
+
+
