@@ -1,5 +1,5 @@
-<h2>{{showSignup ? 'sign up' : Login}}</h2>
-<h2>'hello matt</h2>
+<h2>{{showSignup ? 'Sign Up Matt' : Login}}</h2>
+<h2></h2>
 
 
 
@@ -24,8 +24,16 @@
       
     </div>
     <div class="col-md-2">
+      
+
+      <!-- {{matt's first label}}
+<input [(ngModel)]="matts first label bro" type="text">
+<button> (click)> click bro</button> -->
+
       <button type="button" class="btn btn-secondary" (click)="signup()">
-        Signup
+        Signup BRO
+
+        <router-outlet></router-outlet>
       </button>
     </div>
   </div>

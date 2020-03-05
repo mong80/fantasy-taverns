@@ -5,12 +5,20 @@ import { AuthService } from '../auth.service';
 @Component({
     templateUrl: './login.component.html',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
     userName = '';
     password = '';
     showSignup = 'false'
 
     constructor(private router: Router, private authService: AuthService) {}
+
+    ngOnInit(): void {
+        console.log('hello matt neo');
+    }
+
+    ngOnDestroy(): void {
+        console.log('with great power comes great responsibility');
+    }
 
     login(): void {
         this.authService.login(this.userName, this.password).subscribe(
