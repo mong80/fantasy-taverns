@@ -1,8 +1,0 @@
-#connect backend
-# app=Mattapp
-# db_name=MOverstrom_2020
-# db_server=localhost
-# db_user=MOverstrom
-# db_password=JA572504*888888my password test config
-# jwt_encryption=my password times two without ! !!  
-# jwt_expiration=1000
