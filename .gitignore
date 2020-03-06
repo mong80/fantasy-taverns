@@ -55,5 +55,5 @@ db_name=MOverstrom_2020
 db_server=localhost
 db_user=MOverstrom
 db_password=JA572504*on
-jwt_encryption=180154377eE17180154377eE17
+jwt_encryption=my password times two without !   
 jwt_expiration=1000
