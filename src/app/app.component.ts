@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
 
   loggedIn = false;
+  isAdmin = false;
 
   constructor(
     private authService: AuthService,

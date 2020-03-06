@@ -44,3 +44,16 @@ testem.log
 Thumbs.db
 package-lock.json
 .env
+
+
+
+
+
+#connect backend
+app=Mattapp
+db_name=MOverstrom_2020
+db_server=localhost
+db_user=MOverstrom
+db_password=JA572504*on
+jwt_encryption=180154377eE17180154377eE17
+jwt_expiration=1000
