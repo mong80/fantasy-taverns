@@ -8,16 +8,24 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit, OnDestroy {
     userName = '';
     password = '';
-    showSignup = 'false'
+    showSignup = false;
 
     constructor(private router: Router, private authService: AuthService) {}
 
     ngOnInit(): void {
-        console.log('hello matt neo');
+        console.log({ ...this });
+        // this.email = 'not this email' ;
     }
 
     ngOnDestroy(): void {
         console.log('with great power comes great responsibility');
+    }
+
+    toggleSignup(): void {
+        this.showSignup = !this.showSignup;
+        this.email = '';
+        this.password = '';
+
     }
 
     login(): void {
@@ -35,10 +43,13 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     signup(): void {
+        // const payload = {
+        //     email: this.email,
+        //     password: this.password,
         this.router.navigateByUrl('/signup');
-    }
+    };
+    // console.log(payload)
 
-    
     toggleSignup() : void {}
 
 

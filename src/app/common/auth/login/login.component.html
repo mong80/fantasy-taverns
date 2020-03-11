@@ -1,5 +1,9 @@
 <!-- <h2>{{showSignup ? 'Sign Up Matt' : Login}}</h2> -->
+<<<<<<< HEAD
 <h2></h2>
+=======
+<h2>{{showSignup ? 'Sign Up Matt' : 'Login'}}</h2>
+>>>>>>> d03c205c5741c1def8dd58c7c8260cb95b3bc035
 
 
 
@@ -15,6 +19,8 @@
       <input type="password" class="form-control" [(ngModel)]="password" name="password" />
     </div>
     <div class="col-md-6"></div>
+
+    
   </div>
   <br />
   <div class="row">
@@ -30,9 +36,37 @@
 <input [(ngModel)]="matts first label bro" type="text">
 <button> (click)> click bro</button> -->
 
-      <button type="button" class="btn btn-secondary" (click)="signup()">
-        Signup BRO
 
+
+      <button type="button" class="btn btn-secondary" (click)="login()">
+        Signup
+     
+     
+     
+        <!-- <button *ngIf="!showSignup" type="submit" class="btn btn-primary" (click)="login()">
+        Submit Man
+       
+        <button *ngIf="!showSignup" type="submit" class="btn btn-primary" (click)="signup()">
+        Submit Matt -->
+
+
+
+<!--         
+      <button type="button" class="btn btn-primary" (click)="login()">
+        Submit -->
+
+
+    
+     
+     
+        <button type="button" class="btn btn-secondary float-right" (click)="toggleSignup()">
+          {{ showSignup ? 'Cancel' : 'Signup' }}
+
+        </button>
+
+
+
+        
         <router-outlet></router-outlet>
       </button>
     </div>
