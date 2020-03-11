@@ -11,6 +11,8 @@ const appRoutes: Routes = [
     { path: 'signup', component: SignupComponent },
     { path: 'home', component: HomeComponent, },
     { path: '**', component: HomeComponent, },
+
+    
 ];
 
 @NgModule({
