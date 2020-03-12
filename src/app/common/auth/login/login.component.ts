@@ -9,6 +9,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     userName = '';
     password = '';
     showSignup = false;
+    email: string;
 
     constructor(private router: Router, private authService: AuthService) {}
 
@@ -18,15 +19,17 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        this.email = '';
+        this.password = '';
         console.log('with great power comes great responsibility');
     }
 
-    toggleSignup(): void {
-        this.showSignup = !this.showSignup;
-        this.email = '';
-        this.password = '';
+    // toggleSignup(): void {
+    //     this.showSignup = !this.showSignup;
+    //     this.email = '';
+    //     this.password = '';
 
-    }
+    // }
 
     login(): void {
         this.authService.login(this.userName, this.password).subscribe(
